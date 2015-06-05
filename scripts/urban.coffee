@@ -23,17 +23,14 @@
 module.exports = (robot) ->
 
   robot.respond /what ?is ([^\?]*)[\?]*/i, (msg) ->
-    urbanDict msg, msg.match[1], (found, entry, sounds) ->
+    urbanDict msg, msg.match[1], (found, entry) ->
       if !found
         msg.send "I don't know what \"#{msg.match[1]}\" is"
         return
       msg.send "#{entry.definition}"
-      if sounds and sounds.length
-        msg.send "#{sounds.join(' ')}"
-
 
   robot.respond /(urban)( define)?( example)?( me)? (.*)/i, (msg) ->
-    urbanDict msg, msg.match[5], (found, entry, sounds) ->
+    urbanDict msg, msg.match[5], (found, entry) ->
       if !found
         msg.send "\"#{msg.match[5]}\" not found"
         return
@@ -41,15 +38,13 @@ module.exports = (robot) ->
         msg.send "#{entry.example}"
       else
         msg.send "#{entry.definition}"
-      if sounds and sounds.length
-        msg.send "#{sounds.join(' ')}"
 
 urbanDict = (msg, query, callback) ->
   msg.http("http://api.urbandictionary.com/v0/define?term=#{escape(query)}")
     .get() (err, res, body) ->
       result = JSON.parse(body)
       if result.list.length
-        callback(true, result.list[0], result.sounds)
+        callback(true, result.list[0])
       else
         callback(false)
 
