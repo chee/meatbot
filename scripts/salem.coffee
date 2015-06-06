@@ -93,6 +93,8 @@ salems = [
   "http://41.media.tumblr.com/1b075537535a7241860a55b6032080e6/tumblr_mkfl8hoYER1s647g6o2_500.png"
   "http://41.media.tumblr.com/tumblr_m34ua5szsl1qf4ow2o1_500.jpg"
   "http://38.media.tumblr.com/tumblr_lzyp3eGS9L1qe91cto1_500.gif"
+  "https://33.media.tumblr.com/0b9b708ca3ae79347f1be76ccddaa25d/tumblr_nb3cvs0G7l1raqntvo2_400.gif"
+  "https://38.media.tumblr.com/5a909b84653d5b72e2de99124a835b03/tumblr_inline_mm37u7AO7X1qz4rgp.gif"
 ]
 
 module.exports = (robot) ->
